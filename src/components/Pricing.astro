@@ -1,0 +1,100 @@
+---
+const items = [
+  { title: 'Putu ballīte', price: '60–120 EUR' },
+  { title: 'Piepūšamā atrakcija', price: '40 EUR' },
+  { title: 'Cukura vate', price: '35 EUR' },
+  { title: 'Kubls', price: '65 EUR' },
+];
+---
+
+<section id="cenas" class="pricing">
+  <div class="wrap">
+    <p class="eyebrow center">Cenas</p>
+    <h2 class="title">Papildu iespējas jūsu pasākumam</h2>
+    <p class="intro">
+      Piepilnini savu vakaru ar kādu no papildu izklaidēm — precīzu pieejamību un cenu
+      apstiprinām, sazinoties pa telefonu vai e-pastu.
+    </p>
+
+    <ul class="grid">
+      {items.map((item) => (
+        <li class="card">
+          <span class="name">{item.title}</span>
+          <span class="price">{item.price}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .pricing {
+    background: var(--color-cream);
+    padding: 5.5rem 0;
+  }
+
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .title {
+    text-align: center;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    color: var(--color-pine-deep);
+    margin: 0.5rem 0 0.9rem;
+  }
+
+  .intro {
+    text-align: center;
+    max-width: 56ch;
+    margin: 0 auto 3rem;
+    color: rgba(16, 24, 31, 0.7);
+    line-height: 1.6;
+  }
+
+  .grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.2rem;
+  }
+
+  .card {
+    background: white;
+    border-radius: var(--radius-card);
+    padding: 1.8rem 1.6rem;
+    box-shadow: 0 12px 30px -18px rgba(16, 24, 31, 0.25);
+    border: 1px solid rgba(16, 24, 31, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .card:hover {
+    transform: translateY(-6px) rotate(-0.5deg);
+    box-shadow: 0 22px 40px -18px rgba(16, 24, 31, 0.35);
+    border-color: var(--color-ember);
+  }
+
+  .name {
+    font-size: 1.1rem;
+    font-family: var(--font-display);
+    color: var(--color-pine-deep);
+  }
+
+  .price {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--color-ember-dark);
+  }
+</style>

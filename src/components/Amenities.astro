@@ -1,0 +1,164 @@
+---
+const items = [
+  {
+    title: 'Sauna',
+    desc: 'Sausais karstums somu stilā — ideāli, lai izsildītos pirms lēciena upē.',
+    tag: 'līdz 8 cilvēkiem',
+    icon: 'sauna',
+  },
+  {
+    title: 'Pirts',
+    desc: 'Tradicionālā dūmu pirts ar slotiņām un īstu, latvisku tvaika sajūtu.',
+    tag: 'ar pirtnieku pēc pieprasījuma',
+    icon: 'pirts',
+  },
+  {
+    title: 'Kubls',
+    desc: 'Malkas sildīts kubls tieši upes krastā — zvaigznes virs galvas, tvaiks ap pleciem.',
+    tag: 'līdz 6 cilvēkiem',
+    icon: 'kubls',
+  },
+  {
+    title: 'Rotaļu telpa',
+    desc: 'Vieta mazākajiem viesiem, kamēr lielie bauda vakaru pie kubla.',
+    tag: 'visiem vecumiem',
+    icon: 'rotalu',
+  },
+  {
+    title: 'Futbols',
+    desc: 'Pilnas platības laukums komandu spēlei vai vienkārši bumbas spērienam pirms grillēšanas.',
+    tag: 'āra laukums',
+    icon: 'futbols',
+  },
+];
+---
+
+<section id="pakalpojumi" class="amenities">
+  <div class="wrap">
+    <p class="eyebrow center">Ko piedāvājam</p>
+    <h2 class="title">Viss, kas vajadzīgs īstai ballītei</h2>
+    <p class="intro">
+      Piecas iespējas, kuras var kombinēt pēc patikas — vienai naktij, vienai dienai vai
+      veselai nedēļas nogalei pie Iecavas.
+    </p>
+
+    <div class="grid">
+      {items.map((item) => (
+        <article class="card">
+          <span class="icon-badge" aria-hidden="true">
+            {item.icon === 'sauna' && (
+              <svg viewBox="0 0 48 48"><path d="M12 40h24M14 40V22c0-6 4-10 10-10s10 4 10 10v18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/><path d="M20 16c1-3-1-4-1-6M28 16c1-3-1-4-1-6" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            )}
+            {item.icon === 'pirts' && (
+              <svg viewBox="0 0 48 48"><path d="M8 40h32M12 40l4-16h16l4 16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round"/><path d="M18 24c-2-4 1-6 1-10M24 24c-2-4 1-6 1-10M30 24c-2-4 1-6 1-10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            )}
+            {item.icon === 'kubls' && (
+              <svg viewBox="0 0 48 48"><ellipse cx="24" cy="16" rx="14" ry="5" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M10 16v18c0 3 6 5 14 5s14-2 14-5V16" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M18 10c-1-2 1-3 1-5M27 10c-1-2 1-3 1-5" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            )}
+            {item.icon === 'rotalu' && (
+              <svg viewBox="0 0 48 48"><circle cx="16" cy="24" r="6" fill="none" stroke="currentColor" stroke-width="2.5"/><rect x="26" y="18" width="12" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M10 38c2-4 6-4 6-8M38 38c-2-4-6-4-6-8" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"/></svg>
+            )}
+            {item.icon === 'futbols' && (
+              <svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="14" fill="none" stroke="currentColor" stroke-width="2.5"/><path d="M24 16l6 4-2 7h-8l-2-7z" fill="none" stroke="currentColor" stroke-width="2"/><path d="M24 10v6M10 24h6M24 38v-6M38 24h-6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            )}
+          </span>
+          <h3>{item.title}</h3>
+          <p class="desc">{item.desc}</p>
+          <span class="tag">{item.tag}</span>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .amenities {
+    background: var(--color-cream);
+    padding: 5.5rem 0;
+  }
+
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .title {
+    text-align: center;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    color: var(--color-pine-deep);
+    margin: 0.5rem 0 0.9rem;
+  }
+
+  .intro {
+    text-align: center;
+    max-width: 56ch;
+    margin: 0 auto 3rem;
+    color: rgba(16, 24, 31, 0.7);
+    line-height: 1.6;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.4rem;
+  }
+
+  .card {
+    background: white;
+    border-radius: var(--radius-card);
+    padding: 1.9rem 1.6rem;
+    box-shadow: 0 12px 30px -18px rgba(16, 24, 31, 0.25);
+    border: 1px solid rgba(16, 24, 31, 0.06);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .card:hover {
+    transform: translateY(-6px) rotate(-0.5deg);
+    box-shadow: 0 22px 40px -18px rgba(16, 24, 31, 0.35);
+    border-color: var(--color-ember);
+  }
+
+  .icon-badge {
+    width: 52px;
+    height: 52px;
+    border-radius: 14px;
+    background: var(--color-pine);
+    color: var(--color-ember);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .icon-badge svg {
+    width: 28px;
+    height: 28px;
+  }
+
+  .card h3 {
+    font-size: 1.25rem;
+    color: var(--color-pine-deep);
+  }
+
+  .desc {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: rgba(16, 24, 31, 0.68);
+  }
+
+  .tag {
+    margin-top: auto;
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--color-ember-dark);
+  }
+</style>

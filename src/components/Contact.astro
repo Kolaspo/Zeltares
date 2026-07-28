@@ -1,0 +1,251 @@
+---
+---
+
+<section id="kontakti" class="contact">
+  <div class="wrap">
+    <div class="info">
+      <p class="eyebrow">Kontakti</p>
+      <h2>Sarunāsim jūsu vakaru</h2>
+      <p class="lede">
+        Uzraksti dažus vārdus par savu pasākumu, un atbildēsim ar pieejamību un cenu. Steidzamos
+        gadījumos zvani tieši.
+      </p>
+
+      <ul class="details">
+        <li>
+          <span class="label">Adrese</span>
+          <span>"Zeltāres", Kalnciema ceļš 117, Jelgava, LV-3002</span>
+        </li>
+        <li>
+          <span class="label">Tālrunis</span>
+          <a href="tel:+37129322555">29 322 555</a>
+        </li>
+        <li>
+          <span class="label">E-pasts</span>
+          <a href="mailto:linda.miscenko@gmail.com">linda.miscenko@gmail.com</a>
+        </li>
+        <li>
+          <span class="label">Instagram</span>
+          <a href="https://www.instagram.com/zeltares_atputas_vieta" target="_blank" rel="noopener">@zeltares_atputas_vieta</a>
+        </li>
+        <li>
+          <span class="label">Darba laiks</span>
+          <span>Katru dienu, 09:00–22:00</span>
+        </li>
+      </ul>
+
+      <div class="map-card" aria-hidden="true">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <rect width="300" height="160" fill="var(--color-moss)" />
+          <path d="M0,90 C60,70 100,110 160,95 C220,80 260,100 300,85 L300,160 L0,160 Z" fill="var(--color-pine)" />
+          <circle cx="190" cy="70" r="8" fill="var(--color-ember)" />
+          <path d="M190 70 v-22" stroke="var(--color-ember)" stroke-width="3" />
+        </svg>
+        <span>Karte drīzumā</span>
+      </div>
+    </div>
+
+    <form class="form" id="contact-form">
+      <div class="field">
+        <label for="name">Vārds</label>
+        <input id="name" name="name" type="text" placeholder="Jānis Bērziņš" required />
+      </div>
+
+      <div class="field">
+        <label for="email">E-pasts</label>
+        <input id="email" name="email" type="email" placeholder="janis@piemers.lv" required />
+      </div>
+
+      <div class="field">
+        <label for="event">Pasākuma veids</label>
+        <select id="event" name="event">
+          <option value="ballite">Ballīte / svinības</option>
+          <option value="korporativs">Korporatīvs pasākums</option>
+          <option value="nakts">Nakšņošana</option>
+          <option value="cits">Kaut kas cits</option>
+        </select>
+      </div>
+
+      <div class="field">
+        <label for="date">Vēlamais datums</label>
+        <input id="date" name="date" type="date" />
+      </div>
+
+      <div class="field">
+        <label for="message">Ziņa</label>
+        <textarea id="message" name="message" rows="4" placeholder="Cik viesu plānojat un ko vēlaties izmantot (sauna, pirts, kubls...)"></textarea>
+      </div>
+
+      <button type="submit" class="btn-filled submit-btn">Nosūtīt pieprasījumu</button>
+      <p id="form-status" class="form-status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('form-status');
+  const dateField = document.getElementById('date');
+
+  // Pick up a date selected in the schedule calendar, passed via the hash.
+  if (location.hash.includes('datums=')) {
+    const match = location.hash.match(/datums=([\d-]+)/);
+    if (match && dateField) {
+      dateField.value = match[1];
+    }
+  }
+
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (status) {
+      status.textContent = 'Paldies! Šī ir demo veidlapa — īstajā vietnē pieprasījums tiktu nosūtīts uz e-pastu.';
+    }
+    form.reset();
+  });
+</script>
+
+<style>
+  .contact {
+    background: var(--color-cream);
+    padding: 5.5rem 0;
+  }
+
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.6rem;
+  }
+
+  .info h2 {
+    font-size: clamp(1.9rem, 4vw, 2.4rem);
+    color: var(--color-pine-deep);
+    margin: 0.5rem 0 1rem;
+  }
+
+  .lede {
+    color: rgba(16, 24, 31, 0.7);
+    line-height: 1.6;
+    max-width: 42ch;
+    margin-bottom: 1.8rem;
+  }
+
+  .details {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .details li {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.95rem;
+  }
+
+  .details a {
+    color: var(--color-ember-dark);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .details a:hover {
+    text-decoration: underline;
+  }
+
+  .label {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(16, 24, 31, 0.45);
+    margin-bottom: 0.15rem;
+  }
+
+  .map-card {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    max-width: 340px;
+  }
+
+  .map-card svg {
+    width: 100%;
+    display: block;
+  }
+
+  .map-card span {
+    position: absolute;
+    bottom: 0.6rem;
+    left: 0.7rem;
+    background: rgba(10, 18, 26, 0.75);
+    color: var(--color-cream);
+    font-size: 0.72rem;
+    padding: 0.3rem 0.6rem;
+    border-radius: 999px;
+    font-family: var(--font-mono);
+  }
+
+  .form {
+    background: white;
+    border-radius: var(--radius-card);
+    padding: 2rem;
+    box-shadow: var(--shadow-soft);
+    display: flex;
+    flex-direction: column;
+    gap: 1.1rem;
+  }
+
+  .field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .field label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--color-pine-deep);
+  }
+
+  .field input,
+  .field select,
+  .field textarea {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    padding: 0.7rem 0.85rem;
+    border-radius: 10px;
+    border: 1.5px solid rgba(16, 24, 31, 0.15);
+    background: var(--color-cream);
+    color: var(--color-ink);
+  }
+
+  .field input:focus,
+  .field select:focus,
+  .field textarea:focus {
+    outline: none;
+    border-color: var(--color-ember);
+  }
+
+  .submit-btn {
+    margin-top: 0.4rem;
+    width: 100%;
+  }
+
+  .form-status {
+    font-size: 0.85rem;
+    color: var(--color-moss);
+    min-height: 1.2em;
+  }
+
+  @media (min-width: 900px) {
+    .wrap {
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 4rem;
+    }
+  }
+</style>

@@ -1,0 +1,181 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Zeltāres — ballītes un naktsmītnes Iecavas krastā pie Jelgavas',
+  description = 'Zeltāres ir atpūtas un viesu nams pie Iecavas upes netālu no Jelgavas. Sauna, pirts, kubls, rotaļu telpa un futbola laukums — vieta, kur sarīkot neaizmirstamu ballīti vai pārgulēt naktsmītnē.',
+} = Astro.props;
+
+const ogImage = new URL('/og-image.jpg', Astro.site ?? 'https://zeltares.lv').toString();
+---
+
+<!doctype html>
+<html lang="lv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#16222E" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="lv_LV" />
+    <meta property="og:site_name" content="Zeltāres" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    /* ---- Zeltāres palette: navy & gold, matching the logo ---- */
+    --color-pine: #16222e;       /* primary dark background */
+    --color-pine-deep: #0a121a;  /* darker background / footer */
+    --color-moss: #26394a;       /* secondary navy-slate */
+    --color-cream: #f4ede1;      /* warm birch cream */
+    --color-ember: #c9a227;      /* logo gold accent */
+    --color-ember-dark: #a3811f;
+    --color-amber: #e0b83c;      /* brighter gold highlight */
+    --color-ink: #10181f;        /* near-black text on light bg */
+
+    --font-display: 'Fraunces', 'Georgia', serif;
+    --font-body: 'Manrope', system-ui, sans-serif;
+    --font-mono: 'Space Mono', 'Courier New', monospace;
+
+    --radius-card: 20px;
+    --shadow-soft: 0 20px 45px -20px rgba(10, 18, 26, 0.45);
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background: var(--color-ember);
+    color: var(--color-cream);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    margin: 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  /* ---- Shared button classes, usable across all components ---- */
+  .btn-filled,
+  .btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-body);
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 0.01em;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    text-decoration: none;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+  }
+
+  .btn-filled {
+    background: var(--color-ember);
+    color: var(--color-pine-deep);
+    box-shadow: 0 12px 24px -10px rgba(201, 162, 39, 0.65);
+  }
+
+  .btn-filled:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 30px -10px rgba(201, 162, 39, 0.8);
+    background: var(--color-amber);
+  }
+
+  .btn-filled:focus-visible {
+    outline: 3px solid var(--color-cream);
+    outline-offset: 3px;
+  }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--color-cream);
+    border-color: rgba(244, 237, 225, 0.5);
+  }
+
+  .btn-outline:hover {
+    transform: translateY(-2px);
+    border-color: var(--color-cream);
+    background: rgba(244, 237, 225, 0.08);
+  }
+
+  .btn-outline:focus-visible {
+    outline: 3px solid var(--color-ember);
+    outline-offset: 3px;
+  }
+
+  /* utility eyebrow label used by several sections */
+  .eyebrow {
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    font-size: 0.78rem;
+    color: var(--color-ember);
+  }
+</style>

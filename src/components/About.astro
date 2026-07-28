@@ -1,0 +1,127 @@
+---
+---
+
+<section id="par-mums" class="about">
+  <div class="wrap">
+    <div class="media">
+      <img src="/gallery-viesunams.jpg" alt="Zeltāres viesu nams pie Iecavas upes krasta vakarā" loading="lazy" />
+      <div class="media-tag">Iecavas krasts, 12 km no Jelgavas</div>
+    </div>
+
+    <div class="copy">
+      <p class="eyebrow">Par Zeltārēm</p>
+      <h2>Vieta, kur upe ir pagalms</h2>
+      <p class="p1">
+        Zeltāres radās no vienkāršas domas — vasaras vakars pie upes ir labāks par jebkuru
+        zāli. Šodien tas ir atpūtas un viesu nams, kur var pārgulēt naktsmītnē, izīrēt visu
+        teritoriju ballītei vai vienkārši atbraukt uz vakaru pirtī.
+      </p>
+      <p class="p2">
+        Iecavas krastā ierīkoti sauna, dūmu pirts, malkas kubls, rotaļu telpa bērniem un
+        pilns futbola laukums — viss viena vārtu attālumā no naktsmītnes ēkas.
+      </p>
+
+      <ul class="facts">
+        <li><strong>35+</strong> viesu vienlaikus teritorijā</li>
+        <li><strong>Visu gadu</strong> atvērts, arī ziemā</li>
+        <li><strong>Auto stāvvieta</strong> teritorijā, vieta ugunskuram</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<style>
+  .about {
+    background: var(--color-cream);
+    padding: 1rem 0 5.5rem;
+  }
+
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2.4rem;
+    align-items: center;
+  }
+
+  .media {
+    position: relative;
+    border-radius: var(--radius-card);
+    overflow: hidden;
+    box-shadow: var(--shadow-soft);
+  }
+
+  .media img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+
+  .media-tag {
+    position: absolute;
+    left: 1rem;
+    bottom: 1rem;
+    background: rgba(10, 18, 26, 0.85);
+    color: var(--color-cream);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.5rem 0.9rem;
+    border-radius: 999px;
+    letter-spacing: 0.02em;
+  }
+
+  .copy h2 {
+    font-size: clamp(1.9rem, 4vw, 2.5rem);
+    color: var(--color-pine-deep);
+    margin: 0.5rem 0 1.2rem;
+  }
+
+  .p1,
+  .p2 {
+    color: rgba(16, 24, 31, 0.72);
+    line-height: 1.65;
+    margin-bottom: 1rem;
+  }
+
+  .facts {
+    list-style: none;
+    padding: 0;
+    margin: 1.6rem 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+  }
+
+  .facts li {
+    font-size: 0.95rem;
+    color: var(--color-ink);
+    padding-left: 1.4rem;
+    position: relative;
+  }
+
+  .facts li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: var(--color-ember);
+  }
+
+  .facts strong {
+    color: var(--color-ember-dark);
+    font-family: var(--font-display);
+  }
+
+  @media (min-width: 900px) {
+    .wrap {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+  }
+</style>

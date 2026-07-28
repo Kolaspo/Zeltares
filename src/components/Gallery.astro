@@ -1,0 +1,94 @@
+---
+const photos = [
+  { src: '/gallery-sauna.jpg', alt: 'Sauna ar koka apdari', caption: 'Sauna', rot: -3 },
+  { src: '/gallery-pirts.jpg', alt: 'Silta dūmu pirts', caption: 'Pirts', rot: 2 },
+  { src: '/gallery-kubls.jpg', alt: 'Malkas kubls pie upes', caption: 'Kubls', rot: -2 },
+  { src: '/gallery-playroom.jpg', alt: 'Krāsaina rotaļu telpa', caption: 'Rotaļu telpa', rot: 3 },
+  { src: '/gallery-futbols.jpg', alt: 'Futbola laukums zaļumā', caption: 'Futbols', rot: -1 },
+  { src: '/gallery-viesunams.jpg', alt: 'Viesu nams vakarā', caption: 'Viesu nams', rot: 2 },
+];
+---
+
+<section id="galerija" class="gallery">
+  <div class="wrap">
+    <p class="eyebrow center">Galerija</p>
+    <h2 class="title">Kā izskatās vakars pie Zeltārēm</h2>
+
+    <div class="strip">
+      {photos.map((p) => (
+        <figure class="polaroid" style={`--rot: ${p.rot}deg`}>
+          <img src={p.src} alt={p.alt} loading="lazy" />
+          <figcaption>{p.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .gallery {
+    background: var(--color-pine-deep);
+    padding: 5.5rem 0;
+  }
+
+  .wrap {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .title {
+    text-align: center;
+    color: var(--color-cream);
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    margin: 0.5rem 0 3rem;
+  }
+
+  .strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem 1.2rem;
+  }
+
+  .polaroid {
+    margin: 0;
+    background: var(--color-cream);
+    padding: 0.6rem 0.6rem 1rem;
+    border-radius: 8px;
+    box-shadow: 0 18px 34px -16px rgba(0, 0, 0, 0.55);
+    transform: rotate(var(--rot));
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .polaroid:hover {
+    transform: rotate(0deg) translateY(-6px) scale(1.03);
+    box-shadow: 0 24px 40px -14px rgba(0, 0, 0, 0.6);
+    z-index: 2;
+  }
+
+  .polaroid img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    border-radius: 3px;
+  }
+
+  .polaroid figcaption {
+    text-align: center;
+    padding-top: 0.6rem;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--color-pine-deep);
+  }
+
+  @media (min-width: 700px) {
+    .strip {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>
